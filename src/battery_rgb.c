@@ -86,8 +86,12 @@ static void battery_rgb_thread(void *a, void *b, void *c) {
             led_on = true;
         }
 
-        const struct led_rgb *out = led_on ? &color : &off;
-        int err = led_strip_update_rgb(led, out, 1);
+        int err;
+        if (led_on) {
+            err = led_strip_update_rgb(led, &color, 1);
+        } else {
+            err = led_strip_update_rgb(led, (struct led_rgb *)&off, 1);
+        }
         if (err != 0) {
             LOG_ERR("led_strip_update_rgb failed: %d", err);
         }
