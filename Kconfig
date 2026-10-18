@@ -1,0 +1,8 @@
+config ZMK_BATTERY_RGB
+    bool "Battery level RGB LED indicator"
+    select LED_STRIP
+    select WS2812_STRIP
+    help
+      Drive a single WS2812 LED to show the minimum battery level of the
+      split keyboard's peripherals. Red at 0%, orange at 50%, green at
+      100% (linear HSV hue). Blinks below 20%.

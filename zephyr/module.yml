@@ -1,0 +1,4 @@
+name: zmk-battery-rgb
+build:
+  cmake: .
+  kconfig: Kconfig
